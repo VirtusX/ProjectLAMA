@@ -364,9 +364,6 @@
     <Resource Include="Assets\MenuRed2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PlaylistIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Assets\PlaylistIcon.ico" />
   </ItemGroup>
   <ItemGroup>
