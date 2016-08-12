@@ -8,12 +8,30 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WPF_Study</RootNamespace>
-    <AssemblyName>WPF_Study</AssemblyName>
+    <AssemblyName>Project LAMA</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Project LAMA\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Project L.A.M.A.</ProductName>
+    <PublisherName>VirtusX</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,6 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,10 +52,36 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\LamaIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WPF_Study.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CA115D09A850476193911B71888C783C1F7478B4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WPF_Study_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -45,6 +90,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -55,6 +104,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SingleInstance.cs" />
+    <Page Include="Blue Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Crimson Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Green Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Grey Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +129,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Blue Theme.xaml.cs">
+      <DependentUpon>Blue Theme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crimson Theme.xaml.cs">
+      <DependentUpon>Crimson Theme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Green Theme.xaml.cs">
+      <DependentUpon>Green Theme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Grey Theme.xaml.cs">
+      <DependentUpon>Grey Theme.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +165,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="WPF_Study_TemporaryKey.pfx" />
+    <Resource Include="Assets\Pixel LCD-7.ttf" />
+    <Resource Include="Assets\Repeat1.png" />
+    <Resource Include="Assets\Repeat2.png" />
+    <Resource Include="Assets\RepeatGreen1.png" />
+    <Resource Include="Assets\RepeatGreen2.png" />
+    <Resource Include="Assets\RepeatGrey1.png" />
+    <Resource Include="Assets\RepeatGrey2.png" />
+    <Resource Include="Assets\RepeatOff.png" />
+    <Resource Include="Assets\RepeatRed1.png" />
+    <Resource Include="Assets\RepeatRed2.png" />
+    <Resource Include="Assets\RepeatRose1.png" />
+    <Resource Include="Assets\RepeatRose2.png" />
+    <Resource Include="Assets\zekton rg.ttf" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,7 +189,203 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\2000px-Mute_Icon.svg.png" />
+    <Resource Include="Assets\512px-Fast_backward_font_awesome.svg.png" />
+    <Resource Include="Assets\512px-Fast_forward_font_awesome.svg.png" />
+    <Resource Include="Assets\512px-Pause_font_awesome.svg.png" />
+    <Resource Include="Assets\512px-Play_font_awesome.svg.png" />
+    <Resource Include="Assets\Antu_player-volume.svg.png" />
+    <Resource Include="Assets\BackwardRose1.png" />
+    <Resource Include="Assets\BackwardRose2.png" />
+    <Resource Include="Assets\exit1.png" />
+    <Resource Include="Assets\exit2.png" />
+    <Resource Include="Assets\Fast_backward2.png" />
+    <Resource Include="Assets\Fast_forward2.png" />
+    <Resource Include="Assets\ForwardRose1.png" />
+    <Resource Include="Assets\ForwardRose2.png" />
+    <Resource Include="Assets\menu2.png" />
+    <Resource Include="Assets\menu_start_taskbar_and_window_panel_list-512.png" />
+    <Resource Include="Assets\minimize_window.png" />
+    <Resource Include="Assets\minimize_window2.png" />
+    <Resource Include="Assets\Mute2.png" />
+    <Resource Include="Assets\Pause2.png" />
+    <Resource Include="Assets\PauseRose1.png" />
+    <Resource Include="Assets\PauseRose2.png" />
+    <Resource Include="Assets\Play2.png" />
+    <Resource Include="Assets\PlayRose1.png" />
+    <Resource Include="Assets\PlayRose2.png" />
+    <Resource Include="Assets\Vol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\BlueBack1.png" />
+    <Resource Include="Assets\BlueBack2.png" />
+    <Resource Include="Assets\BlueForward1.png" />
+    <Resource Include="Assets\BlueForward2.png" />
+    <Resource Include="Assets\BlueMenu1.png" />
+    <Resource Include="Assets\BlueMenu2.png" />
+    <Resource Include="Assets\BlueMute1.png" />
+    <Resource Include="Assets\BlueMute2.png" />
+    <Resource Include="Assets\BluePause1.png" />
+    <Resource Include="Assets\BluePause2.png" />
+    <Resource Include="Assets\BluePlay1.png" />
+    <Resource Include="Assets\BluePlay2.png" />
+    <Resource Include="Assets\BlueVol1.png" />
+    <Resource Include="Assets\BlueVol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\BlackMute1.png" />
+    <Resource Include="Assets\BlackMute2.png" />
+    <Resource Include="Assets\BlackVol1.png" />
+    <Resource Include="Assets\BlackVol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\RedBack1.png" />
+    <Resource Include="Assets\RedBack2.png" />
+    <Resource Include="Assets\RedForward1.png" />
+    <Resource Include="Assets\RedForward2.png" />
+    <Resource Include="Assets\RedMute1.png" />
+    <Resource Include="Assets\RedMute2.png" />
+    <Resource Include="Assets\RedPlay1.png" />
+    <Resource Include="Assets\RedPlay2.png" />
+    <Resource Include="Assets\RedVol1.png" />
+    <Resource Include="Assets\RedVol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\RedPause1.png" />
+    <Resource Include="Assets\RedPause2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\GreenBack1.png" />
+    <Resource Include="Assets\GreenBack2.png" />
+    <Resource Include="Assets\GreenForward1.png" />
+    <Resource Include="Assets\GreenForward2.png" />
+    <Resource Include="Assets\GreenMute1.png" />
+    <Resource Include="Assets\GreenMute2.png" />
+    <Resource Include="Assets\GreenPause1.png" />
+    <Resource Include="Assets\GreenPause2.png" />
+    <Resource Include="Assets\GreenPlay1.png" />
+    <Resource Include="Assets\GreenPlay2.png" />
+    <Resource Include="Assets\GreenVol1.png" />
+    <Resource Include="Assets\GreenVol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\GreyBack1.png" />
+    <Resource Include="Assets\GreyBack2.png" />
+    <Resource Include="Assets\GreyForward1.png" />
+    <Resource Include="Assets\GreyForward2.png" />
+    <Resource Include="Assets\GreyMute1.png" />
+    <Resource Include="Assets\GreyMute2.png" />
+    <Resource Include="Assets\GreyPause1.png" />
+    <Resource Include="Assets\GreyPause2.png" />
+    <Resource Include="Assets\GreyPlay1.png" />
+    <Resource Include="Assets\GreyPlay2.png" />
+    <Resource Include="Assets\GreyVol1.png" />
+    <Resource Include="Assets\GreyVol2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\LamaBlue.png" />
+    <Resource Include="Assets\LamaGreen.png" />
+    <Resource Include="Assets\LamaGrey.png" />
+    <Resource Include="Assets\LamaRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\LamaIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\LamaRose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\500px-Repeat_font_awesome.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Blue.PNG" />
+    <Resource Include="Assets\Green.PNG" />
+    <Resource Include="Assets\Grey.PNG" />
+    <Resource Include="Assets\Red.PNG" />
+    <Resource Include="Assets\Rose.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Blue2.png" />
+    <Resource Include="Assets\Green2.png" />
+    <Resource Include="Assets\Grey2.png" />
+    <Resource Include="Assets\Red2.png" />
+    <Resource Include="Assets\Rose2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\PlaylistDelete1.png" />
+    <Resource Include="Assets\PlaylistDelete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\DeleteTrack.png" />
+    <Resource Include="Assets\DeleteTrack2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\DeleteTrackGreen1.png" />
+    <Resource Include="Assets\DeleteTrackGreen2.png" />
+    <Resource Include="Assets\DeleteTrackGrey1.png" />
+    <Resource Include="Assets\DeleteTrackGrey2.png" />
+    <Resource Include="Assets\DeleteTrackRed1.png" />
+    <Resource Include="Assets\DeleteTrackRed2.png" />
+    <Resource Include="Assets\DeleteTrackRose1.png" />
+    <Resource Include="Assets\DeleteTrackRose2.png" />
+    <Resource Include="Assets\PlaylistDeleteGreen1.png" />
+    <Resource Include="Assets\PlaylistDeleteGreen2.png" />
+    <Resource Include="Assets\PlaylistDeleteGrey1.png" />
+    <Resource Include="Assets\PlaylistDeleteGrey2.png" />
+    <Resource Include="Assets\PlaylistDeleteRed1.png" />
+    <Resource Include="Assets\PlaylistDeleteRed2.png" />
+    <Resource Include="Assets\PlaylistDeleteRose1.png" />
+    <Resource Include="Assets\PlaylistDeleteRose2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\MenuBlack1.png" />
+    <Resource Include="Assets\MenuBlack2.png" />
+    <Resource Include="Assets\MenuGreen1.png" />
+    <Resource Include="Assets\MenuGreen2.png" />
+    <Resource Include="Assets\MenuGrey1.png" />
+    <Resource Include="Assets\MenuGrey2.png" />
+    <Resource Include="Assets\MenuRed1.png" />
+    <Resource Include="Assets\MenuRed2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PlaylistIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\PlaylistIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Assets\PlaylistIcon.ico">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
