@@ -119,6 +119,22 @@ namespace WPF_Study
             DragMove();
         }
 
+        private void RedWindow_Drop(object sender, DragEventArgs e)
+        {
+            string[] fileDrop = (string[])e.Data.GetData(DataFormats.FileDrop);
+            musicLoaded = fileDrop[0];
+            if (fileDrop[0].EndsWith(".mp3") || fileDrop[0].EndsWith(".flac") || fileDrop[0].EndsWith(".wav") || fileDrop[0].EndsWith(".aac") || fileDrop[0].EndsWith(".m4a"))
+            {
+                FileExt = 2;
+                MusicLoading();
+            }
+            else if (fileDrop[0].EndsWith(".lpl"))
+            {
+                FileExt = 1;
+                MusicLoading();
+            }
+        }
+
         void MusicLoading()
         {
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
@@ -142,7 +158,7 @@ namespace WPF_Study
                         Count--;
                     }
                 }
-                mediaPlayer.Open(new Uri(paths[0]));
+                mediaPlayer.Open(new Uri(paths[LastTrack]));
                 for (int i = LastTrack; i < files.Count; i++)
                 {
                     Playlist.Items.Add(files[i]);
@@ -523,7 +539,7 @@ namespace WPF_Study
         {
             foreach (var name in Properties.Settings.Default.Track)
             {
-                if (System.IO.File.Exists(Path.GetFileName(name)))
+                if (System.IO.File.Exists(new FileInfo(name).FullName))
                 {
                     files.Add(Path.GetFileName(name));
                     paths.Add(name);
@@ -883,7 +899,7 @@ namespace WPF_Study
 
         private void RoseThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow RoseWindow = new MainWindow(mediaPlayer.Volume);
+            MainWindow RoseWindow = new MainWindow(1,mediaPlayer.Volume);
             if (files.Count > 0)
             {
                 for (int i = 0; i < Playlist.Items.Count; i++)
@@ -892,8 +908,8 @@ namespace WPF_Study
                     RoseWindow.files.Add(files[i]);
                     RoseWindow.paths.Add(paths[i]);
                 }
-                RoseWindow.NowPlay = NowPlay;
-                RoseWindow.LastTrack = LastTrack;
+                RoseWindow.nowPlay = NowPlay;
+                RoseWindow.lastTrack = LastTrack;
                 if (Playlist.Items.Count > 0)
                 {
                     RoseWindow.mediaPlayer.Open(new Uri(paths[NowPlay]));
@@ -957,7 +973,7 @@ namespace WPF_Study
             }
             Close();
             RoseWindow.TaskbarItemInfo.ProgressState = TaskbarItemInfo.ProgressState;
-            RoseWindow.ThemeChange = 1;
+            RoseWindow.startProgram = 1;
             RoseWindow.Left = Left;
             RoseWindow.Top = Top;
             RoseWindow.Show();
@@ -1209,5 +1225,6 @@ namespace WPF_Study
             GreenWindow.Show();
         }
         #endregion
+
     }
 }
