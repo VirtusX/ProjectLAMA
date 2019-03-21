@@ -7,7 +7,7 @@
     <ProjectGuid>{98422B31-496B-4440-8589-745731B8DAB4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WPF_Study</RootNamespace>
+    <RootNamespace>ProjectLama</RootNamespace>
     <AssemblyName>Project LAMA</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -58,7 +58,7 @@
     <ApplicationIcon>Assets\LamaIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>WPF_Study.App</StartupObject>
+    <StartupObject>ProjectLama.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>CA115D09A850476193911B71888C783C1F7478B4</ManifestCertificateThumbprint>
@@ -67,15 +67,23 @@
     <ManifestKeyFile>WPF_Study_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gma.System.MouseKeyHook, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MouseKeyHook.5.4.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.5\lib\net35\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
       <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
@@ -114,6 +122,7 @@
     <Compile Include="TrackNotification.xaml.cs">
       <DependentUpon>TrackNotification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <Page Include="BlueDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,7 +131,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GreyDictionary.xaml">
+    <Page Include="GrayDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,7 +183,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="WPF_Study_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <Resource Include="Assets\Pixel LCD-7.ttf" />
     <Resource Include="Assets\Repeat1.png" />
     <Resource Include="Assets\Repeat2.png" />
@@ -295,7 +304,7 @@
   <ItemGroup>
     <Resource Include="Assets\LamaBlue.png" />
     <Resource Include="Assets\LamaGreen.png" />
-    <Resource Include="Assets\LamaGrey.png" />
+    <Resource Include="Assets\LamaGray.png" />
     <Resource Include="Assets\LamaRed.png" />
   </ItemGroup>
   <ItemGroup>

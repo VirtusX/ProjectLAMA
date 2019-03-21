@@ -1,4 +1,4 @@
-﻿namespace WPF_Study.Properties {
+﻿namespace ProjectLama.Properties {
     
     
     // Этот класс позволяет обрабатывать определенные события в классе параметров:

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:WPF_Study">
+                    xmlns:local="clr-namespace:ProjectLama">
     <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -20,7 +20,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border SnapsToDevicePixels="True" Background="#FFBC8496"  BorderThickness="1" BorderBrush="#FFA47382" Height="4"/>
+                    <Border SnapsToDevicePixels="True" Background="#FF990000"  BorderThickness="1" BorderBrush="#FF630404" Height="4"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -32,17 +32,17 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid>
                         <Border Name="outerBorder"
-                            Background="#55BB34E3"
-                            BorderBrush="#FFF9DCE3"
+                            Background="#FF4B0303"
+                            BorderBrush="White"
                             Height="26" Width="26" Opacity="1" BorderThickness="2" CornerRadius="13"/>
                         <Border Name="innerBorder"
-                            Background="#F2F9DCE3"
-                            BorderBrush="#FFBC8496"
+                            Background="White"
+                            BorderBrush="#FF1F5D9B"
                             Height="10" Width="10" CornerRadius="5" Opacity="1" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="#BBB334E3" />
+                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="#BBE33434" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="outerBorder" Property="Background" Value="#55ACACAC" />
@@ -61,7 +61,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle x:Name="FocusStyle" StrokeDashArray="4 4" RadiusX="5" RadiusY="5" Fill="Transparent"
-                           Stroke="#995302C7" StrokeThickness="1" />
+                           Stroke="#99029cc7" StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -73,13 +73,13 @@
                 <ColumnDefinition Width="Auto" MinWidth="{TemplateBinding MinWidth}"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="White" Placement="Left" SnapsToDevicePixels="True"
+            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="LightGray" Placement="Left" SnapsToDevicePixels="True"
                  Width="4" Margin="0,0,2,0" />
             <Border x:Name="TrackBackground"
                 Grid.Column="1"
                 Margin="0,10"
                 BorderThickness="2"
-                BorderBrush="#F2F9DCE3"
+                BorderBrush="White"
                 HorizontalAlignment="Center" Width="4" />
             <Track x:Name="PART_Track" Grid.Column="1">
                 <Track.DecreaseRepeatButton>
@@ -115,13 +115,13 @@
                 <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TickBar x:Name="TopTick" Visibility="Visible" Fill="#FF6C0267" Placement="Top" SnapsToDevicePixels="True"
+            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="White" Placement="Top" SnapsToDevicePixels="True"
                  Height="4" Margin="0,0,0,2" />
             <Border x:Name="TrackBackground"
                 Grid.Row="1"
                 Margin="10,0"
                 BorderThickness="2"
-                BorderBrush="#F2F9DCE3"
+                BorderBrush="White"
                 VerticalAlignment="Center" Height="4" />
             <Track x:Name="PART_Track" Grid.Row="1">
                 <Track.DecreaseRepeatButton>
@@ -189,7 +189,7 @@
     <!--ScrollBars-->
     <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-        <Setter Property="Foreground" Value="#F2F9DCE3" />
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Width" Value="8" />
         <Setter Property="Template">
@@ -246,11 +246,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <ControlTemplate x:Key="DeleteTrackButton" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/DeleteTrackRose1.png">
+                <ImageBrush ImageSource="Assets/DeleteTrackRed1.png">
                 </ImageBrush>
             </Border.Background>
         </Border>
@@ -258,7 +258,7 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/DeleteTrackRose2.png" />
+                        <ImageBrush ImageSource="Assets/DeleteTrackRed2.png" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -267,7 +267,7 @@
     <ControlTemplate x:Key="DeletePlaylistButton" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/PlaylistDeleteRose1.png">
+                <ImageBrush ImageSource="Assets/PlaylistDeleteRed1.png">
                 </ImageBrush>
             </Border.Background>
         </Border>
@@ -275,7 +275,33 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/PlaylistDeleteRose2.png" />
+                        <ImageBrush ImageSource="Assets/PlaylistDeleteRed2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <ControlTemplate x:Key="Forward" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedForward1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedForward2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/BlueForward1.png"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -284,17 +310,11 @@
     <ControlTemplate x:Key="Backward" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/BackwardRose1.png"/>
+                <ImageBrush ImageSource="Assets/RedBack1.png">
+                </ImageBrush>
             </Border.Background>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="border" Property="Background">
-                    <Setter.Value>
-                        <ImageBrush ImageSource="Assets/BackwardRose2.png"/>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
@@ -302,26 +322,10 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-    <ControlTemplate x:Key="Pause" TargetType="Button">
-        <Border Name="border" BorderThickness="0">
-            <Border.Background>
-                <ImageBrush ImageSource="Assets/PauseRose1.png"/>
-            </Border.Background>
-        </Border>
-        <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/PauseRose2.png"/>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="border" Property="Background">
-                    <Setter.Value>
-                        <ImageBrush ImageSource="Assets/BluePause1.png"/>
+                        <ImageBrush ImageSource="Assets/RedBack2.png"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -330,7 +334,8 @@
     <ControlTemplate x:Key="Play" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/PlayRose1.png"/>
+                <ImageBrush ImageSource="Assets/RedPlay1.png">
+                </ImageBrush>
             </Border.Background>
         </Border>
         <ControlTemplate.Triggers>
@@ -344,35 +349,37 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/PlayRose2.png"/>
+                        <ImageBrush ImageSource="Assets/RedPlay2.png" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    <ControlTemplate x:Key="Forward" TargetType="Button">
+    <ControlTemplate x:Key="Pause" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/ForwardRose1.png"/>
+                <ImageBrush ImageSource="Assets/RedPause1.png">
+                </ImageBrush>
             </Border.Background>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/BlueForward1.png"/>
+                        <ImageBrush ImageSource="Assets/BluePause1.png"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/ForwardRose2.png"/>
+                        <ImageBrush ImageSource="Assets/RedPause2.png" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
     <ControlTemplate x:Key="CloseButtonTemplate" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
@@ -407,10 +414,11 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
     <ControlTemplate x:Key="ListBoxButtonTemplate" TargetType="ToggleButton">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/menu_start_taskbar_and_window_panel_list-512.png">
+                <ImageBrush ImageSource="Assets/MenuRed1.png">
                 </ImageBrush>
             </Border.Background>
         </Border>
@@ -418,16 +426,17 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/menu2.png" />
+                        <ImageBrush ImageSource="Assets/MenuRed2.png" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    
     <ControlTemplate x:Key="RoundedButtonRose" TargetType="Button">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/Rose2.PNG"/>
+                <ImageBrush ImageSource="Assets/Rose2.png"/>
             </Border.Background>
         </Border>
         <ControlTemplate.Triggers>
@@ -507,14 +516,14 @@
     <ControlTemplate x:Key="MuteButton" TargetType="ToggleButton">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/Antu_player-volume.svg.png"/>
+                <ImageBrush ImageSource="Assets/RedVol1.png"/>
             </Border.Background>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/2000px-Mute_Icon.svg.png"/>
+                        <ImageBrush ImageSource="Assets/RedMute1.png"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -526,7 +535,7 @@
                 <MultiTrigger.Setters>
                     <Setter TargetName="border" Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="Assets/Mute2.png"/>
+                            <ImageBrush ImageSource="Assets/RedMute2.png"/>
                         </Setter.Value>
                     </Setter>
                 </MultiTrigger.Setters>
@@ -539,7 +548,7 @@
                 <MultiTrigger.Setters>
                     <Setter TargetName="border" Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="Assets/Vol2.png"/>
+                            <ImageBrush ImageSource="Assets/RedVol2.png"/>
                         </Setter.Value>
                     </Setter>
                 </MultiTrigger.Setters>
@@ -549,7 +558,7 @@
     <ControlTemplate x:Key="RepeatButtonTemplate" TargetType="ToggleButton">
         <Border Name="border" BorderThickness="0">
             <Border.Background>
-                <ImageBrush ImageSource="Assets/RepeatRose1.png">
+                <ImageBrush ImageSource="Assets/RepeatRed1.png">
                 </ImageBrush>
             </Border.Background>
         </Border>
@@ -557,7 +566,7 @@
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/RepeatRose2.png" />
+                        <ImageBrush ImageSource="Assets/RepeatRed2.png" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -571,7 +580,7 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="border" Property="Background">
                     <Setter.Value>
-                        <ImageBrush ImageSource="Assets/RepeatRose2.png"/>
+                        <ImageBrush ImageSource="Assets/RepeatRed2.png"/>
                     </Setter.Value>
                 </Setter>
             </Trigger>
@@ -580,43 +589,45 @@
     <LinearGradientBrush x:Key="Background" EndPoint="0.5,1" StartPoint="0.5,0">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>
-                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="23"/>
                 <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                <RotateTransform Angle="-55.491" CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="-50.906" CenterY="0.5" CenterX="0.5"/>
                 <TranslateTransform/>
             </TransformGroup>
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Color="#FFF9DCE3" Offset="0.49"/>
-        <GradientStop Color="#FFFFAABE" Offset="1"/>
-        <GradientStop Color="#FFFFAABE" Offset="0.012"/>
+        <GradientStop Color="#FF990000" Offset="1"/>
+        <GradientStop Color="#FF990000" Offset="0.026"/>
+        <GradientStop Color="#FFA62828" Offset="0.547"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="PlaylistBackground" EndPoint="0.5,1" StartPoint="0.5,0">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                 <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                <RotateTransform Angle="-200.55599999999998" CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="146.31" CenterY="0.5" CenterX="0.5"/>
                 <TranslateTransform/>
             </TransformGroup>
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Color="#FFFF91AB" Offset="0"/>
-        <GradientStop Color="#FFFFB2C5" Offset="1"/>
-        <GradientStop Color="#FFFFBECE" Offset="0.784"/>
+        <GradientStop Color="#FF800202" Offset="0"/>
+        <GradientStop Color="#FF9E1616" Offset="1"/>
+        <GradientStop Color="#FFB62929" Offset="0.743"/>
+        <GradientStop Color="#FF8B0A0A" Offset="0.392"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="PlaylistBorder" EndPoint="0.5,1" StartPoint="0.5,0">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                 <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                <RotateTransform Angle="160.346" CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="143.13" CenterY="0.5" CenterX="0.5"/>
                 <TranslateTransform/>
             </TransformGroup>
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Color="#F2CD8B9A" Offset="0.555"/>
-        <GradientStop Color="#FFD3B3AF" Offset="0.996"/>
-        <GradientStop Color="#FAFBC7CB" Offset="0.833"/>
+        <GradientStop Color="#FF610707" Offset="0.522"/>
+        <GradientStop Color="#FFAA4040" Offset="0.763"/>
+        <GradientStop Color="#FF720404" Offset="1"/>
+        <GradientStop Color="#FF9E3131" Offset="0.78"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="PlaylistForeground" Color="#FF6C0267"/>
+    <SolidColorBrush x:Key="PlaylistForeground" Color="White"/>
     <LinearGradientBrush x:Key="VisualizerBorder" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>
@@ -626,27 +637,376 @@
                 <TranslateTransform/>
             </TransformGroup>
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Color="#F2F0C5CF" Offset="0"/>
-        <GradientStop Color="#F2E695A8" Offset="1"/>
+        <GradientStop Color="#FFA40000" Offset="0"/>
+        <GradientStop Color="#FF890101" Offset="0.991"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="PlaylistTitle" Color="#FF6C0267"/>
-    <SolidColorBrush x:Key="TimeForeground" Color="#FF6C0267"/>
+    <SolidColorBrush x:Key="PlaylistTitle" Color="White"/>
+    <SolidColorBrush x:Key="TimeForeground" Color="White"/>
+    <SolidColorBrush x:Key="Volume" Color="White"/>
     <SolidColorBrush x:Key="TopBackground" Color="#4C000000"/>
     <LinearGradientBrush x:Key="TopWindow" EndPoint="0.5,1" StartPoint="0.5,0">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>
                 <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                 <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                <RotateTransform Angle="-47.49" CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="-405" CenterY="0.5" CenterX="0.5"/>
                 <TranslateTransform/>
             </TransformGroup>
         </LinearGradientBrush.RelativeTransform>
-        <GradientStop Color="#7FFFAABE"/>
-        <GradientStop Color="#7FF0C3CE" Offset="0.473"/>
-        <GradientStop Color="#7FFFAABE" Offset="0.869"/>
+        <GradientStop Color="#D8990000"/>
+        <GradientStop Color="#D8A62828" Offset="0.661"/>
+        <GradientStop Color="#D8A62828" Offset="0.473"/>
+        <GradientStop Color="#D8990000" Offset="1"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="WindowTitle" Color="#FFF2E4FF"/>
-    <SolidColorBrush x:Key="MenuBackground" Color="#FFFDD0E2"/>
-    <SolidColorBrush x:Key="MenuForeground" Color="Black"/>
-    <SolidColorBrush x:Key="ThemeChoose" Color="#FFFDD0E2"/>
+    <SolidColorBrush x:Key="WindowTitle" Color="White"/>
+    <SolidColorBrush x:Key="MenuBackground" Color="#FF660707"/>
+    <SolidColorBrush x:Key="MenuForeground" Color="White"/>
+    <LinearGradientBrush x:Key="ThemeChoose" EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Reflect">
+        <LinearGradientBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="141.34" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Color="#FFEE5454" Offset="0"/>
+        <GradientStop Color="#FFDC2E2E" Offset="1"/>
+        <GradientStop Color="#FFEA4F4F" Offset="0.598"/>
+    </LinearGradientBrush>
+    <!--<ControlTemplate x:Key="DeleteTrackButton" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/DeleteTrackRed1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/DeleteTrackRed2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="DeletePlaylistButton" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/PlaylistDeleteRed1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/PlaylistDeleteRed2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="MuteButtonRed" TargetType="ToggleButton">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedVol1.png"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedMute1.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="border" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Assets/RedMute2.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="False"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="border" Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Assets/RedVol2.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="CloseButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/exit1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/exit2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="MinimizeButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/minimize_window.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/minimize_window2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ListBoxButtonTemplate" TargetType="ToggleButton">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/MenuRed1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/MenuRed2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="NextButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedForward1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedForward2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/BlueForward1.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedBack1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/BlueBack1.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedBack2.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="PlayButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedPlay1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/BluePlay1.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedPlay2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="PauseButtonTemplate" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RedPause1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/BluePause1.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RedPause2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RoundedButtonRose" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/Rose2.PNG"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/Rose.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RoundedButtonGrey" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/Grey2.PNG"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/Grey.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RoundedButtonBlue" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/Blue2.PNG"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/Blue.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RoundedButtonRed" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/Red.PNG"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/Red.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RoundedButtonGreen" TargetType="Button">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/Green2.PNG"/>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/Green.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="RepeatButtonTemplate" TargetType="ToggleButton">
+        <Border Name="border" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="Assets/RepeatRed1.png">
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RepeatRed2.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RepeatOff.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Assets/RepeatRed2.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>-->
+
 </ResourceDictionary>
