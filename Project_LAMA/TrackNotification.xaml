@@ -9,17 +9,17 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="BlueDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Themes/RoseDictionary.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="Volume" Color="#FF6C0267"/>
         </ResourceDictionary>
     </Window.Resources>
     <Border BorderBrush="Black" BorderThickness="1" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" HorizontalAlignment="Right" Width="320" Margin="0" CornerRadius="10,0,0,0" Background="{DynamicResource Background}" Height="120">
         <Grid Margin="0">
-            <TextBlock x:Name="textBlock" Height="36" Margin="3.333,0,149.667,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" Foreground="{DynamicResource PlaylistTitle}"><Run Text="Now playing:"/><LineBreak/><Run/></TextBlock>
-            <TextBlock x:Name="TrackPlaying" Margin="111,28,9,9" TextWrapping="Wrap" Foreground="{DynamicResource PlaylistTitle}" Text="ГРУППА - НАЗВАНИЕ ПЕСНИ 00:00" FontFamily="/Project LAMA;component/Assets/#Zekton Rg"/>
+            <TextBlock x:Name="textBlock" Height="36" Margin="3.333,0,149.667,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontFamily="/Project LAMA;component/../Assets/#Zekton Rg" Foreground="{DynamicResource PlaylistTitle}"><Run Text="Now playing:"/><LineBreak/><Run/></TextBlock>
+            <TextBlock x:Name="TrackPlaying" Margin="111,28,9,9" TextWrapping="Wrap" Foreground="{DynamicResource PlaylistTitle}" Text="ГРУППА - НАЗВАНИЕ ПЕСНИ 00:00" FontFamily="/Project LAMA;component/../Assets/#Zekton Rg"/>
             <Button x:Name="ExitButton" Content="" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="10" Height="10" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="1" Click="ExitButton_Click" Template="{DynamicResource DeletePlaylistButton}"/>
-            <Image x:Name="LamaPic" HorizontalAlignment="Left" Width="100" Source="Assets/LamaRose.png" Height="100" VerticalAlignment="Bottom"/>
+            <Image x:Name="LamaPic" HorizontalAlignment="Left" Width="100" Source="../Assets/LamaRose.png" Height="100" VerticalAlignment="Bottom"/>
 
         </Grid>
     </Border>

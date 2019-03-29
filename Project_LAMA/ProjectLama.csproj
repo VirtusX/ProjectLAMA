@@ -123,15 +123,15 @@
       <DependentUpon>TrackNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
-    <Page Include="BlueDictionary.xaml">
+    <Page Include="Themes\BlueDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GreenDictionary.xaml">
+    <Page Include="Themes\GreenDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GrayDictionary.xaml">
+    <Page Include="Themes\GrayDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,7 +147,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="CrimsonDictionary.xaml">
+    <Page Include="Themes\CrimsonDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +156,7 @@
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="RoseDictionary.xaml">
+    <Page Include="Themes\RoseDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

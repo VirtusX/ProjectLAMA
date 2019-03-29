@@ -13,18 +13,15 @@ namespace ProjectLama
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             if (!SingleInstance<App>.InitializeAsFirstInstance(Unique)) return;
-            int file = 0,theme = 0;
-            string path = null;
-            var exist = false;      
-            double vol = 1;
+            var property = new PlayerProperty{Start = true};  
             try
             {
                 if (Settings.Default != null)
                 {
-                    vol = Settings.Default.Volume;
-                    theme = Settings.Default.Theme;
+                    property.Volume = Settings.Default.Volume;
+                    property.Theme = Settings.Default.Theme;
                     if (Settings.Default.Track.Capacity != 0)
-                        exist = true;
+                        property.HasPlaylist = true;
                 }
             }
             catch (Exception) { }
@@ -32,16 +29,16 @@ namespace ProjectLama
             {
                 if (e.Args[0].EndsWith(".lpl"))
                 {
-                    path = e.Args[0];
-                    file = 1;
+                    property.MusicLoaded = e.Args[0];
+                    property.FileExtension = PlayerProperty.Extension.PLAYLIST;
                 }
                 else if (e.Args[0].EndsWith(".mp3") || e.Args[0].EndsWith(".flac") || e.Args[0].EndsWith(".wav") || e.Args[0].EndsWith(".aac") || e.Args[0].EndsWith(".m4a"))
                 {
-                    path = e.Args[0];
-                    file = 2;
+                    property.MusicLoaded = e.Args[0];
+                    property.FileExtension = PlayerProperty.Extension.TRACK;
                 }
             }
-            new MainWindow(theme,vol,1, path, file, exist).Show();
+            new MainWindow(property).Show();
             SingleInstance<App>.Cleanup();
         }
 
