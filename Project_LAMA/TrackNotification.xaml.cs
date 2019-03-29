@@ -32,7 +32,7 @@ namespace ProjectLama
         {
             var theme = (PlayerTheme)themeIndex;
             LamaPic.Source = new BitmapImage(new Uri(UriAttribute.Get(theme), UriKind.Relative));
-            Resources = new ResourceDictionary { Source = new Uri($"pack://application:,,,/{ResourceAttribute.Get(theme)}") };
+            Resources = new ResourceDictionary { Source = new Uri($"pack://application:,,,/Themes/{ResourceAttribute.Get(theme)}") };
         }
 
         private void StartCloseTimer()

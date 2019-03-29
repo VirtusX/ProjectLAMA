@@ -18,8 +18,8 @@ namespace ProjectLama
         {
             var type = val.GetType();
             var fi = type.GetField(val.ToString());
-            return fi.GetCustomAttributes(typeof(UriAttribute), false) is UriAttribute[] attrs && attrs.Length > 0 ? 
-                attrs[0].Value: null;
+            return fi.GetCustomAttributes(typeof(UriAttribute), false) is UriAttribute[] attrs && attrs.Length > 0 ?
+                attrs[0].Value : null;
         }
     }
     public class ResourceAttribute : Attribute
@@ -33,11 +33,12 @@ namespace ProjectLama
         {
             var type = val.GetType();
             var fi = type.GetField(val.ToString());
-            return fi.GetCustomAttributes(typeof(ResourceAttribute), false) is ResourceAttribute[] attrs && attrs.Length > 0 ? 
-                attrs[0].Value: null;
+            return fi.GetCustomAttributes(typeof(ResourceAttribute), false) is ResourceAttribute[] attrs && attrs.Length > 0 ?
+                attrs[0].Value : null;
         }
     }
-    public enum PlayerTheme{
+    public enum PlayerTheme
+    {
         [Uri(@"\Assets\LamaRose.png")]
         [Resource("RoseDictionary.xaml")]
         ROSE,
@@ -54,8 +55,32 @@ namespace ProjectLama
         [Resource("GrayDictionary.xaml")]
         GRAY,
     }
-    internal class Utilities
+    public class PlayerProperty
     {
+        public int Theme { get; set; }
+        public double Volume { get; set; }
+        public bool Start { get; set; }
+        public string MusicLoaded { get; set; }
+        public Extension FileExtension { get; set; }
+        public bool HasPlaylist { get; set; }
+
+        public PlayerProperty()
+        {
+            Theme = 0;
+            Volume = 1;
+            Start = false;
+            MusicLoaded = null;
+            FileExtension = 0;
+            HasPlaylist = false;
+        }
+
+        public enum Extension
+        {
+            PLAYLIST = 0,
+            TRACK = 1
+        }
+
 
     }
+    
 }

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectLama"
         mc:Ignorable="d"
-        Title="Project L.A.M.A." AllowsTransparency="True" WindowStyle="None" Background="{DynamicResource TopBackground}" IsManipulationEnabled="True" WindowStartupLocation="Manual" Icon="Assets/LamaIcon.ico" SnapsToDevicePixels="True" ResizeMode="CanMinimize" Width="700" Height="400" PreviewMouseWheel="Window_PreviewMouseWheel" Drop="RoseWindow_Drop" AllowDrop="True" KeyDown="Window_KeyDown">
+        Title="Project L.A.M.A." AllowsTransparency="True" WindowStyle="None" Background="{DynamicResource TopBackground}" IsManipulationEnabled="True" WindowStartupLocation="Manual" Icon="../Assets/LamaIcon.ico" SnapsToDevicePixels="True" ResizeMode="CanMinimize" Width="700" Height="400" PreviewMouseWheel="Window_PreviewMouseWheel" Drop="RoseWindow_Drop" AllowDrop="True" KeyDown="Window_KeyDown">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="RoseDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/RoseDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="Volume" Color="#FF6C0267"/>
         </ResourceDictionary>
@@ -35,168 +35,128 @@
                     Command="MediaCommands.PreviousTrack"
                     CommandTarget="{Binding ElementName=PreviousButton}"
                     Description="Previous song"
-                    ImageSource="Assets/RedBack1.png" IsBackgroundVisible="True"/>
+                    ImageSource="../Assets/RedBack1.png" IsBackgroundVisible="True"/>
                     <ThumbButtonInfo x:Name="PauseThumb"
                     DismissWhenClicked="False"
                     Command="MediaCommands.Pause"
                     CommandTarget="{Binding ElementName=PauseButton}"
                     Description="Pause"
-                    ImageSource="Assets/RedPause1.png" IsBackgroundVisible="True"/>
+                    ImageSource="../Assets/RedPause1.png" IsBackgroundVisible="True"/>
                     <ThumbButtonInfo x:Name="PlayThumb"
                     DismissWhenClicked="False"
                     Command="MediaCommands.Play"
                     CommandTarget="{Binding ElementName=PlayButton}"
                     Description="Play"
-                    ImageSource="Assets/RedPlay1.png" IsBackgroundVisible="True"/>
+                    ImageSource="../Assets/RedPlay1.png" IsBackgroundVisible="True"/>
                     <ThumbButtonInfo x:Name="NextThumb"
                     DismissWhenClicked="False"
                     Command="MediaCommands.NextTrack"
                     CommandTarget="{Binding ElementName=NextButton}"
                     Description="Next song"
-                    ImageSource="Assets/RedForward1.png" IsBackgroundVisible="True"/>
+                    ImageSource="../Assets/RedForward1.png" IsBackgroundVisible="True"/>
                 </ThumbButtonInfoCollection>
             </TaskbarItemInfo.ThumbButtonInfos>
         </TaskbarItemInfo>
     </Window.TaskbarItemInfo>
 
-    <Grid Margin="2" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+    <Grid Margin="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="TopWindow" Margin="0" Grid.RowSpan="3" Background="{DynamicResource TopWindow}">
+        <Grid x:Name="TopWindow" Margin="0,0,-4,0" Grid.RowSpan="2" Background="{DynamicResource TopWindow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="TopTitle" Text="Project L.A.M.A." Padding="5" Margin="0,0,68,0" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" FontSize="24" Height="33" VerticalAlignment="Top" MouseLeftButtonDown="TopTitle_MouseLeftButtonDown" Foreground="{DynamicResource WindowTitle}" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="TopTitle" Text="Project L.A.M.A." Padding="5" Margin="0,0,68,0" FontFamily="/Project LAMA;component/../Assets/#Zekton Rg" FontSize="24" Height="33" VerticalAlignment="Top" MouseLeftButtonDown="TopTitle_MouseLeftButtonDown" Foreground="{DynamicResource WindowTitle}" Grid.ColumnSpan="2"/>
             <Button  x:Name="Exit" HorizontalAlignment="Right" Width="38" BorderBrush="{x:Null}" Click="Exit_Click" IsCancel="True" IsHitTestVisible="True" AutomationProperties.IsRowHeader="True" Height="38" VerticalAlignment="Top" Margin="0" Content="" ToolTip="Close" Template="{DynamicResource CloseButtonTemplate}" Grid.ColumnSpan="2" IsTabStop="False">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/exit1.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="../Assets/exit1.png" Stretch="Uniform"/>
                 </Button.Background>
-
             </Button>
             <Button x:Name="Minimize" Content="" Margin="623,0,38,358" BorderBrush="{x:Null}" Click="Minimize_Click" ToolTip="Minimize" Template="{DynamicResource MinimizeButtonTemplate}" Grid.ColumnSpan="2" IsTabStop="False" Width="38" Height="38" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/minimize_window.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="../Assets/minimize_window.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Width="700" Margin="0,38,0,0" Grid.RowSpan="2" Background="{DynamicResource Background}">
+        <Grid Grid.Row="1" Width="700" Margin="0,35,-4,3" Background="{DynamicResource Background}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="48*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="318*"/>
                 <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
-            <ToggleButton x:Name="RepeatButton" Content="" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,50,43" VerticalAlignment="Bottom" Width="40" Height="40" Template="{DynamicResource RepeatButtonTemplate}" Checked="RepeatButton_Checked" Unchecked="RepeatButton_Unchecked" ToolTip="Repeat" IsTabStop="False">
+            <ToggleButton x:Name="RepeatButton" Content="" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,50,43" VerticalAlignment="Bottom" Width="40" Height="40" Template="{DynamicResource RepeatButtonTemplate}" Checked="RepeatButton_Checked" Unchecked="RepeatButton_Unchecked" ToolTip="Repeat" IsTabStop="False" IsEnabled="False">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="Assets/Repeat1.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="../Assets/Repeat1.png" Stretch="Uniform"/>
                 </ToggleButton.Background>
             </ToggleButton>
-            <Button x:Name="PreviousButton" Content="" Margin="50,0,0,48" BorderBrush="{x:Null}" Height="30" VerticalAlignment="Bottom" Click="PreviousButton_Click" ToolTip="Previous song" Template="{DynamicResource Backward}" HorizontalAlignment="Left" Width="30" Grid.Column="1" IsTabStop="False">
+            <Button x:Name="PreviousButton" Content="" Margin="50,0,0,48" BorderBrush="{x:Null}" Height="30" VerticalAlignment="Bottom" Click="PreviousButton_Click" ToolTip="Previous song" Template="{DynamicResource Backward}" HorizontalAlignment="Left" Width="30" Grid.Column="1" IsTabStop="False" IsEnabled="False">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/512px-Fast_backward_font_awesome.svg.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="../Assets/512px-Fast_backward_font_awesome.svg.png" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="PauseButton" Content="" Margin="95,0,0,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" Click="PauseButton_Click" ToolTip="Pause" Template="{DynamicResource Pause}" Grid.Column="1" HorizontalAlignment="Left" Width="30" IsTabStop="False">
+            <Button x:Name="PauseButton" Content="" Margin="95,0,0,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" Click="PauseButton_Click" ToolTip="Pause" Template="{DynamicResource Pause}" Grid.Column="1" HorizontalAlignment="Left" Width="30" IsTabStop="False" IsEnabled="False">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/512px-Pause_font_awesome.svg.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="../Assets/512px-Pause_font_awesome.svg.png" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="PlayButton" Content="" Margin="0,0,145,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="30" Click="PlayButton_Click" ToolTip="Play" Template="{DynamicResource Play}" Grid.Column="1" IsTabStop="False">
+            <Button x:Name="PlayButton" Content="" Margin="0,0,145,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="30" Click="PlayButton_Click" ToolTip="Play" Template="{DynamicResource Play}" Grid.Column="1" IsTabStop="False" IsEnabled="False">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/512px-Play_font_awesome.svg.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="../Assets/512px-Play_font_awesome.svg.png" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="NextButton" Content="" Margin="0,0,100,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="30" Click="NextButton_Click" ToolTip="Next song" Template="{DynamicResource Forward}" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" IsTabStop="False">
+            <Button x:Name="NextButton" Content="" Margin="0,0,100,48" VerticalAlignment="Bottom" Height="30" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="30" Click="NextButton_Click" ToolTip="Next song" Template="{DynamicResource Forward}" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" IsTabStop="False" IsEnabled="False">
                 <Button.Background>
-                    <ImageBrush ImageSource="Assets/ForwardRose2.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="../Assets/ForwardRose2.png" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
             <Slider x:Name="Vol" HorizontalAlignment="Right" Margin="0,54,9,100" Orientation="Vertical"  Maximum="1" LargeChange="0.1" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource VerticalSlider}" Style="{DynamicResource SliderStyle}" Width="39" IsSelectionRangeEnabled="True" ValueChanged="Vol_ValueChanged" Thumb.DragStarted="Vol_DragStarted"  Thumb.DragCompleted="Vol_DragCompleted" Grid.Column="2" SmallChange="0.01" Value="{Binding Volume, ElementName=ME, Mode=TwoWay}" FocusVisualStyle="{DynamicResource MyFocusVisualStyte}" Focusable="False"/>
-            <TextBlock x:Name="VolLevel" HorizontalAlignment="Right" Margin="0,35,3,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Foreground="{DynamicResource Volume}" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" FontSize="18.667" Width="50" Grid.Column="2" Text="{Binding Value, ElementName=Vol, StringFormat=\{0:0\,#%\}}"/>
-            <ToggleButton x:Name="HamburgerButton" Content="" Margin="8,20.711,15,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Height="27.25" Checked="HamburgerButton_Checked" Unchecked="HamburgerButton_Unchecked" Template="{DynamicResource ListBoxButtonTemplate}" IsTabStop="False">
-                <ToggleButton.Background>
-                    <ImageBrush ImageSource="Assets/menu_start_taskbar_and_window_panel_list-512.png" Stretch="UniformToFill"/>
-                </ToggleButton.Background>
-
-            </ToggleButton>
+            <TextBlock x:Name="VolLevel" HorizontalAlignment="Right" Margin="0,35,3,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Foreground="{DynamicResource Volume}" FontFamily="/Project LAMA;component/../Assets/#Zekton Rg" FontSize="18.667" Width="50" Grid.Column="2" Text="{Binding Value, ElementName=Vol, StringFormat=\{0:0\,#%\}}"/>
             <Border BorderThickness="2" Margin="44.5,0,44.5,90" Grid.Column="1" Width="226" Height="226" VerticalAlignment="Bottom" d:LayoutOverrides="Height" BorderBrush="{DynamicResource VisualizerBorder}">
-                <Image x:Name="Visualizer" Margin="0" Source="Assets/LamaRose.png" Stretch="Fill"/>
+                <Image x:Name="Visualizer" Margin="0" Source="../Assets/LamaRose.png" Stretch="Fill"/>
             </Border>
-            <ListBox x:Name="Menu" Margin="-10,25,0,0" Background="{DynamicResource MenuBackground}" AllowDrop="True" AlternationCount="1" HorizontalAlignment="Left" Width="145" Height="99.289" VerticalAlignment="Top" BorderBrush="Black" Grid.Column="1" BorderThickness="2" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" Foreground="{DynamicResource MenuForeground}" Visibility="Hidden">
-                <ListBoxItem x:Name="OpenFile" Content="Открыть файл" Selected="OpenFile_Selected"/>
-                <ListBoxItem x:Name="OpenPlaylist" Content="Открыть плейлист" Selected="OpenPlaylist_Selected"/>
-                <ListBoxItem x:Name="Save" Content="Сохранить плейлист" Selected="Save_Selected"/>
-                <ListBoxItem x:Name="Themes" Content="Темы..." Selected="Themes_Selected"/>
-                <ListBoxItem x:Name="Close" Content="Закрыть" Selected="Close_Selected"/>
-            </ListBox>
             <ToggleButton x:Name="MuteButton" Content="{Binding Value, ElementName=Vol}" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,8,68" VerticalAlignment="Bottom" Template="{DynamicResource MuteButton}" Height="40" Width="39.913" Click="MuteButton_Click" ToolTip="Mute" IsTabStop="False"/>
-            <Label x:Name="Time" Content="00:00 / 00:00" Grid.Column="2" Margin="85,0,73,2" VerticalAlignment="Bottom" FontFamily="/Project LAMA;component/Assets/#Pixel LCD7" FontSize="16" Foreground="{DynamicResource TimeForeground}"/>
+            <Label x:Name="Time" Content="00:00 / 00:00" Grid.Column="2" Margin="85,0,73,2" VerticalAlignment="Bottom" FontFamily="/Project LAMA;component/../Assets/#Pixel LCD7" FontSize="16" Foreground="{DynamicResource TimeForeground}"/>
             <Grid Grid.Column="2" Margin="60,5,76.5,43">
-                <ListView x:Name="Playlist" Margin="0,37,1.5,0" Foreground="{DynamicResource PlaylistForeground}" MouseDoubleClick="Playlist_MouseDoubleClick" SelectedIndex="1" BorderThickness="1" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" AllowDrop="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{DynamicResource PlaylistBackground}" BorderBrush="{DynamicResource PlaylistBorder}" UseLayoutRounding="False" KeyDown="Playlist_KeyDown" IsTextSearchEnabled="False" IsHitTestVisible="True" SelectionMode="Single" Focusable="False"/>
-                <TextBlock x:Name="PlaylistTitle" Margin="0,0.396,86.5,0" VerticalAlignment="Top" Text="Playlist" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" FontSize="26.667" Height="34.604" TextWrapping="Wrap" Foreground="{DynamicResource PlaylistTitle}" TextDecorations="{x:Null}"/>
-                <Button x:Name="DeletePlaylist" Margin="156.5,6,0,279" FontSize="13.333" FontWeight="Bold" Template="{DynamicResource DeletePlaylistButton}" Click="DeletePlaylist_Click" ToolTip="Clear playlist" IsTabStop="False" Width="25" Height="25">
+                <ListView x:Name="Playlist" Margin="0,37,1.5,0" Foreground="{DynamicResource PlaylistForeground}"  SelectedIndex="1" BorderThickness="1" 
+                          FontFamily="/Project LAMA;component/../Assets/#Zekton Rg" AllowDrop="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                          Background="{DynamicResource PlaylistBackground}" BorderBrush="{DynamicResource PlaylistBorder}" UseLayoutRounding="False" KeyDown="Playlist_KeyDown" 
+                          IsTextSearchEnabled="False" IsHitTestVisible="True" SelectionMode="Single" Focusable="False" />
+                <TextBlock x:Name="PlaylistTitle" Margin="0,0.396,86.5,0" VerticalAlignment="Top" Text="Playlist" FontFamily="/Project LAMA;component/../Assets/#Zekton Rg" FontSize="26.667" Height="34.604" TextWrapping="Wrap" Foreground="{DynamicResource PlaylistTitle}" TextDecorations="{x:Null}"/>
+                <Button x:Name="DeletePlaylist" Margin="156.5,6,0,279" FontSize="13.333" FontWeight="Bold" Template="{DynamicResource DeletePlaylistButton}" Click="DeletePlaylist_Click" ToolTip="Clear playlist" IsTabStop="False" Width="25" Height="25" Visibility="Hidden">
                     <Button.Background>
-                        <ImageBrush ImageSource="Assets/PlaylistDeleteRose1.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="../Assets/PlaylistDeleteRose1.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="DeleteTrack" FontSize="13.333" FontWeight="Bold" Template="{DynamicResource DeleteTrackButton}" Click="DeleteTrack_Click" Margin="118.5,1,22,273" ToolTip="Delete track" IsTabStop="False">
+                <Button x:Name="DeleteTrack" FontSize="13.333" FontWeight="Bold" Template="{DynamicResource DeleteTrackButton}" Click="DeleteTrack_Click" Margin="118.5,1,22,273" ToolTip="Delete track" IsTabStop="False" Visibility="Hidden">
                     <Button.Background>
-                        <ImageBrush ImageSource="Assets/DeleteTrackRose1.png" Stretch="Uniform"/>
-                    </Button.Background>
-                </Button>
-            </Grid>
-            <Grid x:Name="ThemesChoose" Grid.Column="1" Margin="96,18,137,40" Grid.ColumnSpan="2" Height="300" Background="{DynamicResource TopBackground}" Visibility="Hidden">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="13*"/>
-                    <RowDefinition Height="65*"/>
-                    <RowDefinition Height="22*"/>
-                </Grid.RowDefinitions>
-                <ScrollViewer x:Name="ThemeChooser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="300" Grid.RowSpan="3">
-                    <Grid Height="1010" Width="400" Background="{DynamicResource ThemeChoose}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="22*"/>
-                            <RowDefinition Height="90*"/>
-                            <RowDefinition Height="95*"/>
-                            <RowDefinition Height="95*"/>
-                            <RowDefinition Height="95*"/>
-                            <RowDefinition Height="108*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock x:Name="ThemesTitle" Margin="153,0,0,0" TextWrapping="Wrap" Text="Темы" VerticalAlignment="Top" FontSize="33.333" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" Foreground="{DynamicResource PlaylistTitle}" Height="40" HorizontalAlignment="Left" Width="94"/>
-                        <Button x:Name="RoseThemeButton" Content="Button" Margin="50,10,0,0" VerticalAlignment="Center" Template="{DynamicResource RoundedButtonRose}" Height="170" Grid.Row="1" HorizontalAlignment="Left" Width="300" Click="RoseThemeButton_Click"/>
-                        <Button x:Name="BlueThemeButton" Content="Button" Margin="50,18,0,0" Template="{DynamicResource RoundedButtonBlue}" Click="BlueThemeButton_Click" Height="172" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Left" Width="300"/>
-                        <Button x:Name="RedThemeButton" Content="Button" Margin="50,18,0,0" Template="{DynamicResource RoundedButtonRed}" Height="172" VerticalAlignment="Top" Click="RedThemeButton_Click" HorizontalAlignment="Left" Width="300" Grid.Row="3" RenderTransformOrigin="0.5,0.5">
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform AngleX="0.993"/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="1.483"/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                        </Button>
-                        <Button x:Name="GreenThemeButton" Content="" VerticalAlignment="Top" Height="172" HorizontalAlignment="Left" Width="300" Background="#FF18E03C" Template="{DynamicResource RoundedButtonGreen}" Click="GreenThemeButton_Click" Margin="50,18,0,0" Grid.Row="4"/>
-                        <Button x:Name="GreyThemeButton" Content="" Margin="50,20,0,0" HorizontalAlignment="Left" Width="300" Background="{x:Null}" Template="{DynamicResource RoundedButtonGrey}" BorderBrush="{x:Null}" Click="GrayThemeButton_Click" Grid.Row="5" Height="172" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="BlueText" Height="15" Margin="51,5,0,0" TextWrapping="Wrap" Text="Dark midnight blue" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" Foreground="#FF003366" Grid.Row="2"/>
-                        <TextBlock x:Name="RoseText" Height="15" Margin="50.173,-5,0,0" TextWrapping="Wrap" Text="Carnation pink" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="/Project LAMA;component/Assets/#Zekton Rg" Foreground="#FF78006D" Grid.Row="1"/>
-                        <TextBlock x:Name="CrimsonText" Height="15" Margin="51,5,49,0" Grid.Row="3" TextWrapping="Wrap" Text="Crimson red" VerticalAlignment="Top" Foreground="#FF990000" FontFamily="/Project LAMA;component/Assets/#Zekton Rg"/>
-                        <TextBlock x:Name="GreenText" Height="20" Margin="51,5,74,0" Grid.Row="4" TextWrapping="Wrap" Text="Shamrock green" VerticalAlignment="Top" Foreground="#FF286E30" FontFamily="/Project LAMA;component/Assets/#Zekton Rg"/>
-                        <TextBlock x:Name="GreyText" Height="15" Margin="51,5,59,0" Grid.Row="5" TextWrapping="Wrap" Text="Shark grey" VerticalAlignment="Top" Foreground="#FF2F3540" FontFamily="/Project LAMA;component/Assets/#Zekton Rg"/>
-                    </Grid>
-                </ScrollViewer>
-                <Border BorderBrush="{DynamicResource VisualizerBorder}" BorderThickness="2" Margin="0" Grid.RowSpan="3"/>
-                <Button x:Name="OkButton" Content="" Margin="2,0,0,18" VerticalAlignment="Bottom" Click="OkButton_Click" Height="19" HorizontalAlignment="Left" Width="19" Template="{DynamicResource DeletePlaylistButton}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="Assets/exit2.png"/>
+                        <ImageBrush ImageSource="../Assets/DeleteTrackRose1.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
             </Grid>
             <MediaElement x:Name="ME"  Grid.Column="1" Margin="45,40,45,93" LoadedBehavior="Manual" Volume="1" Visibility="Hidden" UnloadedBehavior="Manual"/>
+            <Menu Margin="5,36,5,0" Height="38" VerticalAlignment="Top" Background="Transparent" ItemContainerStyle="{DynamicResource MenuStyle}" Focusable="False">
+                <MenuItem Header="" Height="38" Margin="0" Width="38" Focusable="False" ItemContainerStyle="{DynamicResource FullMenuStyle}" >
+                    <MenuItem Header="Открыть..." Height="22" Margin="0" Width="157" Background="White" Foreground="Black">
+                        <MenuItem x:Name="OpenSong" Header="Открыть песню" Height="22" Margin="0" Width="157" Click="OpenFile_Selected" Background="White" Foreground="Black"/>
+                        <MenuItem x:Name="OpenPlaylist1" Header="Открыть плейлист" Height="22" Margin="0" Width="157" Click="OpenPlaylist_Selected" Background="White" Foreground="Black"/>
+                    </MenuItem>
+                    <MenuItem Header="Сохранить плейлист" Height="22" Margin="0" Width="157" Click="Save_Selected"  Background="White" Foreground="Black"/>
+                    <MenuItem Header="Темы" Height="22" Margin="0" Width="157"  Background="White" Foreground="Black">
+                        <MenuItem Header="Rose" Height="22" Margin="0" Width="157" Click="RoseThemeButton_Click"  Background="White" Foreground="Black"/>
+                        <MenuItem Header="Blue" Height="22" Margin="0" Width="157" Click="BlueThemeButton_Click"  Background="White" Foreground="Black"/>
+                        <MenuItem Header="Green" Height="22" Margin="0" Width="157" Click="GreenThemeButton_Click"  Background="White" Foreground="Black"/>
+                        <MenuItem Header="Crimson" Height="22" Margin="0" Width="157" Click="RedThemeButton_Click"  Background="White" Foreground="Black"/>
+                        <MenuItem Header="Gray" Height="22" Margin="0" Width="157" Click="GrayThemeButton_Click"  Background="White" Foreground="Black"/>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
         </Grid>
-        <Slider x:Name="TrackTime" Thumb.DragStarted="TrackTime_DragStarted"  Thumb.DragCompleted="TrackTime_DragCompleted" Height="50" Margin="90,0,281,-9" VerticalAlignment="Bottom" Foreground="#FF6C0267" Background="#00000000" Maximum="100" Grid.Row="1" TickFrequency="20" ValueChanged="TrackTime_ValueChanged" IsMoveToPointEnabled="True" Template="{DynamicResource HorizontalSlider}" TickPlacement="TopLeft" Grid.RowSpan="2" IsTabStop="False" />
+        <Slider x:Name="TrackTime" Thumb.DragStarted="TrackTime_DragStarted"  Thumb.DragCompleted="TrackTime_DragCompleted" Height="50" Margin="90,0,281,-9" VerticalAlignment="Bottom" Foreground="#FF6C0267" Background="#00000000" Maximum="100" Grid.Row="1" TickFrequency="20" ValueChanged="TrackTime_ValueChanged" IsMoveToPointEnabled="True" Template="{DynamicResource HorizontalSlider}" TickPlacement="TopLeft" Grid.RowSpan="2" IsTabStop="False" IsEnabled="False" />
     </Grid>
 
 </Window>
