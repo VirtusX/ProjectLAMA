@@ -185,17 +185,17 @@
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <Resource Include="Assets\Pixel LCD-7.ttf" />
-    <Resource Include="Assets\Repeat1.png" />
-    <Resource Include="Assets\Repeat2.png" />
-    <Resource Include="Assets\RepeatGreen1.png" />
-    <Resource Include="Assets\RepeatGreen2.png" />
-    <Resource Include="Assets\RepeatGrey1.png" />
-    <Resource Include="Assets\RepeatGrey2.png" />
+    <Resource Include="Assets\Blue\Repeat1.png" />
+    <Resource Include="Assets\Blue\Repeat2.png" />
+    <Resource Include="Assets\Green\RepeatGreen1.png" />
+    <Resource Include="Assets\Green\RepeatGreen2.png" />
+    <Resource Include="Assets\Gray\RepeatGrey1.png" />
+    <Resource Include="Assets\Gray\RepeatGrey2.png" />
     <Resource Include="Assets\RepeatOff.png" />
-    <Resource Include="Assets\RepeatRed1.png" />
-    <Resource Include="Assets\RepeatRed2.png" />
-    <Resource Include="Assets\RepeatRose1.png" />
-    <Resource Include="Assets\RepeatRose2.png" />
+    <Resource Include="Assets\Red\RepeatRed1.png" />
+    <Resource Include="Assets\Red\RepeatRed2.png" />
+    <Resource Include="Assets\Rose\RepeatRose1.png" />
+    <Resource Include="Assets\Rose\RepeatRose2.png" />
     <Resource Include="Assets\zekton rg.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -208,104 +208,100 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\2000px-Mute_Icon.svg.png" />
-    <Resource Include="Assets\512px-Fast_backward_font_awesome.svg.png" />
-    <Resource Include="Assets\512px-Fast_forward_font_awesome.svg.png" />
-    <Resource Include="Assets\512px-Pause_font_awesome.svg.png" />
-    <Resource Include="Assets\512px-Play_font_awesome.svg.png" />
-    <Resource Include="Assets\Antu_player-volume.svg.png" />
-    <Resource Include="Assets\BackwardRose1.png" />
-    <Resource Include="Assets\BackwardRose2.png" />
+    <Resource Include="Assets\Rose\2000px-Mute_Icon.svg.png" />
+    <Resource Include="Assets\Blue\512px-Fast_backward_font_awesome.svg.png" />
+    <Resource Include="Assets\Blue\512px-Fast_forward_font_awesome.svg.png" />
+    <Resource Include="Assets\Blue\512px-Pause_font_awesome.svg.png" />
+    <Resource Include="Assets\Blue\512px-Play_font_awesome.svg.png" />
+    <Resource Include="Assets\Rose\Antu_player-volume.svg.png" />
+    <Resource Include="Assets\Rose\BackwardRose1.png" />
+    <Resource Include="Assets\Rose\BackwardRose2.png" />
     <Resource Include="Assets\exit1.png" />
     <Resource Include="Assets\exit2.png" />
-    <Resource Include="Assets\Fast_backward2.png" />
-    <Resource Include="Assets\Fast_forward2.png" />
-    <Resource Include="Assets\ForwardRose1.png" />
-    <Resource Include="Assets\ForwardRose2.png" />
-    <Resource Include="Assets\menu2.png" />
-    <Resource Include="Assets\menu_start_taskbar_and_window_panel_list-512.png" />
+    <Resource Include="Assets\Rose\ForwardRose1.png" />
+    <Resource Include="Assets\Rose\ForwardRose2.png" />
+    <Resource Include="Assets\Rose\menu2.png" />
+    <Resource Include="Assets\Rose\menu_start_taskbar_and_window_panel_list-512.png" />
     <Resource Include="Assets\minimize_window.png" />
     <Resource Include="Assets\minimize_window2.png" />
-    <Resource Include="Assets\Mute2.png" />
-    <Resource Include="Assets\Pause2.png" />
-    <Resource Include="Assets\PauseRose1.png" />
-    <Resource Include="Assets\PauseRose2.png" />
-    <Resource Include="Assets\Play2.png" />
-    <Resource Include="Assets\PlayRose1.png" />
-    <Resource Include="Assets\PlayRose2.png" />
-    <Resource Include="Assets\Vol2.png" />
+    <Resource Include="Assets\Rose\Mute2.png" />
+    <Resource Include="Assets\Rose\PauseRose1.png" />
+    <Resource Include="Assets\Rose\PauseRose2.png" />
+    <Resource Include="Assets\Rose\PlayRose1.png" />
+    <Resource Include="Assets\Rose\PlayRose2.png" />
+    <Resource Include="Assets\Rose\Vol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\BlueBack1.png" />
-    <Resource Include="Assets\BlueBack2.png" />
-    <Resource Include="Assets\BlueForward1.png" />
-    <Resource Include="Assets\BlueForward2.png" />
-    <Resource Include="Assets\BlueMenu1.png" />
-    <Resource Include="Assets\BlueMenu2.png" />
-    <Resource Include="Assets\BlueMute1.png" />
-    <Resource Include="Assets\BlueMute2.png" />
-    <Resource Include="Assets\BluePause1.png" />
-    <Resource Include="Assets\BluePause2.png" />
-    <Resource Include="Assets\BluePlay1.png" />
-    <Resource Include="Assets\BluePlay2.png" />
-    <Resource Include="Assets\BlueVol1.png" />
-    <Resource Include="Assets\BlueVol2.png" />
+    <Resource Include="Assets\BackOff.png" />
+    <Resource Include="Assets\Blue\BlueBack2.png" />
+    <Resource Include="Assets\ForwardOff.png" />
+    <Resource Include="Assets\Blue\BlueForward2.png" />
+    <Resource Include="Assets\Blue\BlueMenu1.png" />
+    <Resource Include="Assets\Blue\BlueMenu2.png" />
+    <Resource Include="Assets\MuteOff.png" />
+    <Resource Include="Assets\Blue\BlueMute2.png" />
+    <Resource Include="Assets\PauseOff.png" />
+    <Resource Include="Assets\Blue\BluePause2.png" />
+    <Resource Include="Assets\PlayOff.png" />
+    <Resource Include="Assets\Blue\BluePlay2.png" />
+    <Resource Include="Assets\VolOff.png" />
+    <Resource Include="Assets\Blue\BlueVol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\BlackMute1.png" />
-    <Resource Include="Assets\BlackMute2.png" />
-    <Resource Include="Assets\BlackVol1.png" />
-    <Resource Include="Assets\BlackVol2.png" />
+    <Resource Include="Assets\Blue\BlackMute1.png" />
+    <Resource Include="Assets\Blue\BlackMute2.png" />
+    <Resource Include="Assets\Blue\BlackVol1.png" />
+    <Resource Include="Assets\Blue\BlackVol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\RedBack1.png" />
-    <Resource Include="Assets\RedBack2.png" />
-    <Resource Include="Assets\RedForward1.png" />
-    <Resource Include="Assets\RedForward2.png" />
-    <Resource Include="Assets\RedMute1.png" />
-    <Resource Include="Assets\RedMute2.png" />
-    <Resource Include="Assets\RedPlay1.png" />
-    <Resource Include="Assets\RedPlay2.png" />
-    <Resource Include="Assets\RedVol1.png" />
-    <Resource Include="Assets\RedVol2.png" />
+    <Resource Include="Assets\Red\RedBack1.png" />
+    <Resource Include="Assets\Red\RedBack2.png" />
+    <Resource Include="Assets\Red\RedForward1.png" />
+    <Resource Include="Assets\Red\RedForward2.png" />
+    <Resource Include="Assets\Red\RedMute1.png" />
+    <Resource Include="Assets\Red\RedMute2.png" />
+    <Resource Include="Assets\Red\RedPlay1.png" />
+    <Resource Include="Assets\Red\RedPlay2.png" />
+    <Resource Include="Assets\Red\RedVol1.png" />
+    <Resource Include="Assets\Red\RedVol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\RedPause1.png" />
-    <Resource Include="Assets\RedPause2.png" />
+    <Resource Include="Assets\Red\RedPause1.png" />
+    <Resource Include="Assets\Red\RedPause2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\GreenBack1.png" />
-    <Resource Include="Assets\GreenBack2.png" />
-    <Resource Include="Assets\GreenForward1.png" />
-    <Resource Include="Assets\GreenForward2.png" />
-    <Resource Include="Assets\GreenMute1.png" />
-    <Resource Include="Assets\GreenMute2.png" />
-    <Resource Include="Assets\GreenPause1.png" />
-    <Resource Include="Assets\GreenPause2.png" />
-    <Resource Include="Assets\GreenPlay1.png" />
-    <Resource Include="Assets\GreenPlay2.png" />
-    <Resource Include="Assets\GreenVol1.png" />
-    <Resource Include="Assets\GreenVol2.png" />
+    <Resource Include="Assets\Green\GreenBack1.png" />
+    <Resource Include="Assets\Green\GreenBack2.png" />
+    <Resource Include="Assets\Green\GreenForward1.png" />
+    <Resource Include="Assets\Green\GreenForward2.png" />
+    <Resource Include="Assets\Green\GreenMute1.png" />
+    <Resource Include="Assets\Green\GreenMute2.png" />
+    <Resource Include="Assets\Green\GreenPause1.png" />
+    <Resource Include="Assets\Green\GreenPause2.png" />
+    <Resource Include="Assets\Green\GreenPlay1.png" />
+    <Resource Include="Assets\Green\GreenPlay2.png" />
+    <Resource Include="Assets\Green\GreenVol1.png" />
+    <Resource Include="Assets\Green\GreenVol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\GreyBack1.png" />
-    <Resource Include="Assets\GreyBack2.png" />
-    <Resource Include="Assets\GreyForward1.png" />
-    <Resource Include="Assets\GreyForward2.png" />
-    <Resource Include="Assets\GreyMute1.png" />
-    <Resource Include="Assets\GreyMute2.png" />
-    <Resource Include="Assets\GreyPause1.png" />
-    <Resource Include="Assets\GreyPause2.png" />
-    <Resource Include="Assets\GreyPlay1.png" />
-    <Resource Include="Assets\GreyPlay2.png" />
-    <Resource Include="Assets\GreyVol1.png" />
-    <Resource Include="Assets\GreyVol2.png" />
+    <Resource Include="Assets\Gray\GreyBack1.png" />
+    <Resource Include="Assets\Gray\GreyBack2.png" />
+    <Resource Include="Assets\Gray\GreyForward1.png" />
+    <Resource Include="Assets\Gray\GreyForward2.png" />
+    <Resource Include="Assets\Gray\GreyMute1.png" />
+    <Resource Include="Assets\Gray\GreyMute2.png" />
+    <Resource Include="Assets\Gray\GreyPause1.png" />
+    <Resource Include="Assets\Gray\GreyPause2.png" />
+    <Resource Include="Assets\Gray\GreyPlay1.png" />
+    <Resource Include="Assets\Gray\GreyPlay2.png" />
+    <Resource Include="Assets\Gray\GreyVol1.png" />
+    <Resource Include="Assets\Gray\GreyVol2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\LamaBlue.png" />
-    <Resource Include="Assets\LamaGreen.png" />
-    <Resource Include="Assets\LamaGray.png" />
-    <Resource Include="Assets\LamaRed.png" />
+    <Resource Include="Assets\Blue\LamaBlue.png" />
+    <Resource Include="Assets\Green\LamaGreen.png" />
+    <Resource Include="Assets\Gray\LamaGray.png" />
+    <Resource Include="Assets\Red\LamaRed.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\LamaIcon.ico" />
@@ -314,10 +310,7 @@
     <Resource Include="Assets\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\LamaRose.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\500px-Repeat_font_awesome.svg.png" />
+    <Resource Include="Assets\Rose\LamaRose.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -332,54 +325,40 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Blue.PNG" />
-    <Resource Include="Assets\Green.PNG" />
-    <Resource Include="Assets\Grey.PNG" />
-    <Resource Include="Assets\Red.PNG" />
-    <Resource Include="Assets\Rose.PNG" />
+    <Resource Include="Assets\Blue\PlaylistDelete1.png" />
+    <Resource Include="Assets\Blue\PlaylistDelete2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Blue2.png" />
-    <Resource Include="Assets\Green2.png" />
-    <Resource Include="Assets\Grey2.png" />
-    <Resource Include="Assets\Red2.png" />
-    <Resource Include="Assets\Rose2.png" />
+    <Resource Include="Assets\Blue\DeleteTrack.png" />
+    <Resource Include="Assets\Blue\DeleteTrack2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\PlaylistDelete1.png" />
-    <Resource Include="Assets\PlaylistDelete2.png" />
+    <Resource Include="Assets\Green\DeleteTrackGreen1.png" />
+    <Resource Include="Assets\Green\DeleteTrackGreen2.png" />
+    <Resource Include="Assets\Gray\DeleteTrackGrey1.png" />
+    <Resource Include="Assets\Gray\DeleteTrackGrey2.png" />
+    <Resource Include="Assets\Red\DeleteTrackRed1.png" />
+    <Resource Include="Assets\Red\DeleteTrackRed2.png" />
+    <Resource Include="Assets\Rose\DeleteTrackRose1.png" />
+    <Resource Include="Assets\Rose\DeleteTrackRose2.png" />
+    <Resource Include="Assets\Green\PlaylistDeleteGreen1.png" />
+    <Resource Include="Assets\Green\PlaylistDeleteGreen2.png" />
+    <Resource Include="Assets\Gray\PlaylistDeleteGrey1.png" />
+    <Resource Include="Assets\Gray\PlaylistDeleteGrey2.png" />
+    <Resource Include="Assets\Red\PlaylistDeleteRed1.png" />
+    <Resource Include="Assets\Red\PlaylistDeleteRed2.png" />
+    <Resource Include="Assets\Rose\PlaylistDeleteRose1.png" />
+    <Resource Include="Assets\Rose\PlaylistDeleteRose2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\DeleteTrack.png" />
-    <Resource Include="Assets\DeleteTrack2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\DeleteTrackGreen1.png" />
-    <Resource Include="Assets\DeleteTrackGreen2.png" />
-    <Resource Include="Assets\DeleteTrackGrey1.png" />
-    <Resource Include="Assets\DeleteTrackGrey2.png" />
-    <Resource Include="Assets\DeleteTrackRed1.png" />
-    <Resource Include="Assets\DeleteTrackRed2.png" />
-    <Resource Include="Assets\DeleteTrackRose1.png" />
-    <Resource Include="Assets\DeleteTrackRose2.png" />
-    <Resource Include="Assets\PlaylistDeleteGreen1.png" />
-    <Resource Include="Assets\PlaylistDeleteGreen2.png" />
-    <Resource Include="Assets\PlaylistDeleteGrey1.png" />
-    <Resource Include="Assets\PlaylistDeleteGrey2.png" />
-    <Resource Include="Assets\PlaylistDeleteRed1.png" />
-    <Resource Include="Assets\PlaylistDeleteRed2.png" />
-    <Resource Include="Assets\PlaylistDeleteRose1.png" />
-    <Resource Include="Assets\PlaylistDeleteRose2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\MenuBlack1.png" />
-    <Resource Include="Assets\MenuBlack2.png" />
-    <Resource Include="Assets\MenuGreen1.png" />
-    <Resource Include="Assets\MenuGreen2.png" />
-    <Resource Include="Assets\MenuGrey1.png" />
-    <Resource Include="Assets\MenuGrey2.png" />
-    <Resource Include="Assets\MenuRed1.png" />
-    <Resource Include="Assets\MenuRed2.png" />
+    <Resource Include="Assets\Blue\MenuBlack1.png" />
+    <Resource Include="Assets\Blue\MenuBlack2.png" />
+    <Resource Include="Assets\Green\MenuGreen1.png" />
+    <Resource Include="Assets\Green\MenuGreen2.png" />
+    <Resource Include="Assets\Gray\MenuGrey1.png" />
+    <Resource Include="Assets\Gray\MenuGrey2.png" />
+    <Resource Include="Assets\Red\MenuRed1.png" />
+    <Resource Include="Assets\Red\MenuRed2.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\PlaylistIcon.ico" />

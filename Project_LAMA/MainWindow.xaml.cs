@@ -55,7 +55,7 @@ namespace ProjectLama
             if (PlayerProperty.MusicLoaded != null)
                 LoadMusic();
             else if (PlayerProperty.HasPlaylist)
-                LoadPlaylist();
+                LoadLastPlaylist();
             Vol.Value = MediaPlayer.Volume = _volChange = PlayerProperty.Volume;
             Playlist.SelectedIndex = Playlist.Items.Count > 0 ? NowPlay : 0;
         }
@@ -73,10 +73,7 @@ namespace ProjectLama
             Close();
         }
 
-        private void Minimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
+        private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
         private void Window_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -90,10 +87,7 @@ namespace ProjectLama
 
         }
 
-        private void TopTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
+        private void TopTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
 
         private void RoseWindow_Drop(object sender, DragEventArgs e)
         {
@@ -122,17 +116,31 @@ namespace ProjectLama
             for (var i = 0; i < Playlist.Items.Count; i++)
             {
                 var item = (ListViewItem)Playlist.ItemContainerGenerator.ContainerFromIndex(i);
-                if (item != null)
-                {
-                    item.MouseDoubleClick -= Item_MouseDoubleClick;
-                    item.MouseDoubleClick += Item_MouseDoubleClick;
-                    item.Template = (ControlTemplate)Application.Current.Resources["PlaylistPlayingItem"];
-                    item.Style = i == NowPlay ? (Style)Application.Current.Resources["PlaylistPlaying"] : null;
-                }
+                if (item == null) continue;
+                item.MouseDoubleClick -= Item_MouseDoubleClick;
+                item.MouseDoubleClick += Item_MouseDoubleClick;
+                item.Style = i == NowPlay ? (Style)Application.Current.Resources["PlaylistPlaying"] : null;
+                if (item.ContextMenu != null) continue;
+                var menu = new ContextMenu();
+                var play = new MenuItem {Header = "Воспроизвести"};
+                play.Click += Play_Click;
+                var copy = new MenuItem {Header = "Копировать"};
+                copy.Click += (sender, args) => Clipboard.SetText(item.Content.ToString());
+                var delete = new MenuItem {Header = "Удалить"};
+                delete.Click += DeleteTrack_Click;
+                menu.Items.Add(play);
+                menu.Items.Add(copy);
+                menu.Items.Add(delete);
+                item.ContextMenu = menu;
+                item.Template = (ControlTemplate)Application.Current.Resources["PlaylistPlayingItem"];
             }
         }
 
-        private void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Play_Click(object sender, RoutedEventArgs e) => PlaySelected();
+
+        public void Item_MouseDoubleClick(object sender, MouseButtonEventArgs e) => PlaySelected();
+
+        private void PlaySelected()
         {
             if (Playlist.Items.Count > 1)
             {
@@ -159,43 +167,22 @@ namespace ProjectLama
             PlayButton.IsEnabled = PlayThumb.IsEnabled = _paused = isPaused;
             TaskbarItemInfo.ProgressState = isPaused ? TaskbarItemProgressState.Paused : TaskbarItemProgressState.Normal;
         }
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            PlayPauseControl(false);
-        }
-        private void PauseButton_Click(object sender, RoutedEventArgs e)
-        {
-            PlayPauseControl(true);
-        }
+        private void PlayButton_Click(object sender, RoutedEventArgs e) => PlayPauseControl(false);
+        private void PauseButton_Click(object sender, RoutedEventArgs e) => PlayPauseControl(true);
 
-        private void StartCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            PlayPauseControl(false);
-        }
+        private void StartCommand_Executed(object sender, ExecutedRoutedEventArgs e) => PlayPauseControl(false);
 
-        private void PauseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            PlayPauseControl(true);
-        }
+        private void PauseCommand_Executed(object sender, ExecutedRoutedEventArgs e) => PlayPauseControl(true);
 
         private void NextPreviousControl(bool isNext)
         {
             if (Files.Count > 1)
             {
                 RepeatButton.IsChecked = _repeatOn = false;
-                if (NowPlay != Files.Count - 1 && isNext || NowPlay != 0 && !isNext)
-                {
-                    if (isNext)
-                        NowPlay++;
-                    else
-                        NowPlay--;
-                    Playlist.SelectedIndex = NowPlay;
-                }
-                else
-                {
-                    NowPlay = isNext ? 0 : Files.Count - 1;
-                    Playlist.SelectedIndex = NowPlay;
-                }
+                NowPlay = NowPlay != Files.Count - 1 && isNext || NowPlay != 0 && !isNext
+                    ? isNext ? NowPlay + 1 : NowPlay - 1
+                    : isNext ? 0 : Files.Count - 1;
+                Playlist.SelectedIndex = NowPlay;
                 StartTrack();
             }
             PauseButton.IsEnabled = PauseThumb.IsEnabled = true;
@@ -203,25 +190,13 @@ namespace ProjectLama
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
         }
 
-        private void PreviousCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            NextPreviousControl(false);
-        }
+        private void PreviousCommand_Executed(object sender, ExecutedRoutedEventArgs e) => NextPreviousControl(false);
 
-        private void NextCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            NextPreviousControl(true);
-        }
+        private void NextCommand_Executed(object sender, ExecutedRoutedEventArgs e) => NextPreviousControl(true);
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            NextPreviousControl(true);
-        }
+        private void NextButton_Click(object sender, RoutedEventArgs e) => NextPreviousControl(true);
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            NextPreviousControl(false);
-        }
+        private void PreviousButton_Click(object sender, RoutedEventArgs e) => NextPreviousControl(false);
 
         private void MuteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -240,36 +215,14 @@ namespace ProjectLama
             }
         }
 
-        private void Playlist_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (Playlist.Items.Count > 1)
-            {
-                RepeatButton.IsChecked = _repeatOn = false;
-                NowPlay = Playlist.SelectedIndex;
-                StartTrack();
-            }
-            PauseButton.IsEnabled = PauseThumb.IsEnabled = true;
-            PlayButton.IsEnabled = PlayThumb.IsEnabled = false;
-            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
-            _track?.Close();
-            _track = new Track(TopTitle.Text, this);
-            _track.Show();
-        }
-
         private void RepeatButton_Checked(object sender, RoutedEventArgs e)
         {
             if (Files.Count > 0) _repeatOn = true;
         }
 
-        private void RepeatButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            _repeatOn = false;
-        }
+        private void RepeatButton_Unchecked(object sender, RoutedEventArgs e) => _repeatOn = false;
 
-        private void DeletePlaylist_Click(object sender, RoutedEventArgs e)
-        {
-            DeleteAllTracks();
-        }
+        private void DeletePlaylist_Click(object sender, RoutedEventArgs e) => DeleteAllTracks();
 
         private void DeleteAllTracks()
         {
@@ -285,7 +238,7 @@ namespace ProjectLama
             LastTrack = 0;
             _hasCover = false;
             NowPlay = 0;
-            DeleteTrack.Visibility = DeletePlaylist.Visibility = Visibility.Hidden;
+            DeletePlaylist.Visibility = Visibility.Hidden;
             TrackTime.IsEnabled = true;
         }
 
@@ -317,38 +270,28 @@ namespace ProjectLama
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if (e.Key == Key.Space)
+                PlayPauseControl(!_paused);
+            else if (e.Key == Key.Down || e.Key == Key.Up)
             {
-                case Key.Space:
-                    PlayPauseControl(!_paused);
-                    break;
-                case Key.Down:
-                    _volChanged = true;
-                    Vol.Value -= 0.02;
-                    _volChanged = false;
-                    break;
-                case Key.Up:
-                    _volChanged = true;
-                    Vol.Value += 0.02;
-                    _volChanged = false;
-                    break;
+                _volChanged = true;
+                Vol.Value = e.Key == Key.Down ? Vol.Value - 0.02 : Vol.Value + 0.02;
+                _volChanged = false;
             }
         }
 
         private void Playlist_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
-                PlayPauseControl(!_paused);
+            if (e.Key == Key.Space) PlayPauseControl(!_paused);
         }
 
         private void MusicControl(int i)
         {
             if (Files.Count <= 1) return;
-            if (i == 0)
-                if (NowPlay != 0)
-                    NowPlay--;
-                else
-                    NowPlay = Files.Count - 1;
+            if (i == 0 && NowPlay != 0)
+                NowPlay--;
+            else if (i == 0)
+                NowPlay = Files.Count - 1;
             else if (NowPlay != Files.Count - 1)
                 NowPlay++;
             else
@@ -377,24 +320,25 @@ namespace ProjectLama
                     Visualizer.Source = bmp;
                 }
                 else
-                {
-                    var directoryPath = Path.GetDirectoryName(Paths[i]) ?? "";
-                    var filteredFiles = Directory
-                        .EnumerateFiles(directoryPath) //<--- .NET 4.5
-                        .Where(files => files.ToLower().EndsWith("png") || files.ToLower().EndsWith("jpg"))
-                        .ToList();
-                    if (filteredFiles.Count > 0)
-                        Visualizer.Source = new BitmapImage(new Uri(filteredFiles[0]));
-                    else
-                    {
-                        Visualizer.Source = new BitmapImage(_uri);
-                        _hasCover = false;
-                    }
-                }
+                    FindPicture(i);
             }
             catch (Exception ex)
             {
-                File.AppendAllText("crashlog.txt", ex.Message);
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
+            }
+        }
+
+        private void FindPicture(int i)
+        {
+            var directoryPath = Path.GetDirectoryName(Paths[i]) ?? "";
+            var filteredFiles = Directory.EnumerateFiles(directoryPath)
+                .Where(files => files.ToLower().EndsWith("png") || files.ToLower().EndsWith("jpg")).ToList();
+            if (filteredFiles.Count > 0)
+                Visualizer.Source = new BitmapImage(new Uri(filteredFiles[0]));
+            else
+            {
+                Visualizer.Source = new BitmapImage(_uri);
+                _hasCover = false;
             }
         }
 
@@ -402,23 +346,7 @@ namespace ProjectLama
         {
             if (PlayerProperty.FileExtension == PlayerProperty.Extension.PLAYLIST)
             {
-                var playlistLoaded = new List<string>();
-                playlistLoaded.AddRange(File.ReadAllLines(PlayerProperty.MusicLoaded));
-                var count = int.Parse(playlistLoaded[0]);
-                for (var i = 1; i < count + 1; i++)
-                {
-                    if (File.Exists(playlistLoaded[i]))
-                    {
-                        Paths.Add(playlistLoaded[i]);
-                        Files.Add(Path.GetFileNameWithoutExtension(playlistLoaded[i]));
-                    }
-                    else
-                    {
-                        playlistLoaded.RemoveAt(i);
-                        i--;
-                        count--;
-                    }
-                }
+                LoadPlaylist(PlayerProperty.MusicLoaded);
                 MediaPlayer.Open(new Uri(Paths[LastTrack]));
             }
             else
@@ -430,7 +358,28 @@ namespace ProjectLama
             SetMusic();
         }
 
-        private void LoadPlaylist()
+        private void LoadPlaylist(string from)
+        {
+            var playlistLoaded = new List<string>();
+            playlistLoaded.AddRange(File.ReadAllLines(from));
+            var count = int.Parse(playlistLoaded[0]);
+            for (var i = 1; i < count + 1; i++)
+            {
+                if (File.Exists(playlistLoaded[i]))
+                {
+                    Paths.Add(playlistLoaded[i]);
+                    Files.Add(Path.GetFileNameWithoutExtension(playlistLoaded[i]));
+                }
+                else
+                {
+                    playlistLoaded.RemoveAt(i);
+                    i--;
+                    count--;
+                }
+            }
+        }
+
+        private void LoadLastPlaylist()
         {
             foreach (var name in Default.Track)
             {
@@ -442,31 +391,36 @@ namespace ProjectLama
             if (Paths.Capacity <= 0) return;
             try
             {
-                MediaPlayer.Open(new Uri(Paths[Default.NowPlay]));
-                TrackTime.IsEnabled = true;
-                LoadCover(Default.NowPlay);
-                TopTitle.Text = RoseWindow.Title = Files[Default.NowPlay];
-                if (Playlist.Items.Count > 0)
-                {
-                    Playlist.SelectedIndex = Default.NowPlay;
-                    MediaPlayer.Position = Default.Time;
-                    MediaPlayer.Pause();
-                    DeletePlaylist.Visibility = DeleteTrack.Visibility = Visibility.Visible;
-                    PauseButton.IsEnabled = PauseThumb.IsEnabled = false;
-                    PlayButton.IsEnabled = PlayThumb.IsEnabled = true;
-                }
-                NowPlay = Default.NowPlay;
-                LastTrack = Files.Count;
-                NextButton.IsEnabled = PreviousButton.IsEnabled = NextThumb.IsEnabled = BackThumb.IsEnabled = Files.Count > 1;
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Paused;
-                Default.Track.Clear();
-                Default.NowPlay = 0;
-                Default.Time = TimeSpan.Zero;
+                StartLoadedPlaylist();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                File.AppendAllText("Exception.txt", e.Message);
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
             }
+        }
+
+        private void StartLoadedPlaylist()
+        {
+            NowPlay = Default.NowPlay;
+            TrackTime.IsEnabled = true;
+            MediaPlayer.Open(new Uri(Paths[NowPlay]));
+            LoadCover(NowPlay);
+            TopTitle.Text = RoseWindow.Title = Files[NowPlay];
+            if (Playlist.Items.Count > 0)
+            {
+                Playlist.SelectedIndex = NowPlay;
+                MediaPlayer.Position = Default.Time;
+                MediaPlayer.Pause();
+                DeletePlaylist.Visibility = Visibility.Visible;
+                PauseButton.IsEnabled = PauseThumb.IsEnabled = false;
+                PlayButton.IsEnabled = PlayThumb.IsEnabled = true;
+            }
+            LastTrack = Files.Count;
+            NextButton.IsEnabled = PreviousButton.IsEnabled = NextThumb.IsEnabled = BackThumb.IsEnabled = Files.Count > 1;
+            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Paused;
+            Default.Track.Clear();
+            Default.NowPlay = 0;
+            Default.Time = TimeSpan.Zero;
         }
 
         #endregion
@@ -482,34 +436,25 @@ namespace ProjectLama
                     RepeatButton.IsEnabled = true;
                 if (_activeWindow == 0) _activeWindow = GetForegroundWindow();
                 var windowState = GetForegroundWindow();
-                if (GetAsyncKeyState(0xB3) && _keyTimer == 0)
-                {
-                    PlayPauseControl(!_paused);
-                    _keyTimer = 1;
-                }
-                if (GetAsyncKeyState(0xB1) && _keyTimer == 0 && windowState != _activeWindow)
-                {
-                    MusicControl(0);
-                    _keyTimer = 1;
-                }
-                if (GetAsyncKeyState(0xB0) && _keyTimer == 0 && windowState != _activeWindow)
-                {
-                    MusicControl(1);
-                    _keyTimer = 1;
-                }
-                if (MediaPlayer.Source != null && Paths.Count != 0)
+                if (GetAsyncKeyState(0xB3) && _keyTimer == 0) PlayPauseControl(!_paused);
+                else if (GetAsyncKeyState(0xB1) && _keyTimer == 0 && windowState != _activeWindow) MusicControl(0);
+                else if (GetAsyncKeyState(0xB0) && _keyTimer == 0 && windowState != _activeWindow) MusicControl(1);
+                if(_keyTimer == 0) _keyTimer = 1;
+                if (MediaPlayer.Source != null && Paths.Count != 0 && MediaPlayer.NaturalDuration.HasTimeSpan)
                     Time.Content = $"{MediaPlayer.Position:mm\\:ss} / {MediaPlayer.NaturalDuration.TimeSpan:mm\\:ss}";
                 else if (Paths.Count == 0)
                 {
                     Time.Content = "        --:--";
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                 }
-                if (MediaPlayer.Source != null && (MediaPlayer.NaturalDuration.HasTimeSpan) && !_userIsDraggingSlider)
+                if (MediaPlayer.Source != null && MediaPlayer.NaturalDuration.HasTimeSpan && !_userIsDraggingSlider)
                     SetTrackTime();
-                if (_keyTimer != 0)
-                    _keyTimer--;
+                if (_keyTimer != 0) _keyTimer--;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
+            }
         }
 
         private void SetTrackTime()
@@ -540,10 +485,7 @@ namespace ProjectLama
             PlayButton.IsEnabled = PlayThumb.IsEnabled = false;
         }
 
-        private void TrackTime_DragStarted(object sender, DragStartedEventArgs e)
-        {
-            _userIsDraggingSlider = true;
-        }
+        private void TrackTime_DragStarted(object sender, DragStartedEventArgs e) => _userIsDraggingSlider = true;
 
         private void TrackTime_DragCompleted(object sender, DragCompletedEventArgs e)
         {
@@ -551,20 +493,11 @@ namespace ProjectLama
             MediaPlayer.Position = TimeSpan.FromSeconds(TrackTime.Value);
         }
 
-        private void TrackTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            TrackTime.SelectionEnd = TrackTime.Value;
-        }
+        private void TrackTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) => TrackTime.SelectionEnd = TrackTime.Value;
 
-        private void Vol_DragStarted(object sender, RoutedEventArgs e)
-        {
-            _volChanged = true;
-        }
+        private void Vol_DragStarted(object sender, RoutedEventArgs e) => _volChanged = true;
 
-        private void Vol_DragCompleted(object sender, RoutedEventArgs e)
-        {
-            _volChanged = false;
-        }
+        private void Vol_DragCompleted(object sender, RoutedEventArgs e) => _volChanged = false;
 
         private void Vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -578,9 +511,12 @@ namespace ProjectLama
                     Vol.Value = _volChange;
                     MediaPlayer.Volume = _volChange;
                 }
-                MuteButton.IsChecked = Vol.Value == 0 || Vol.Value < 0;
+                MuteButton.IsChecked = Vol.Value <= 0;
             }
-            catch { };
+            catch (Exception ex)
+            {
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
+            }
         }
         #endregion
 
@@ -605,7 +541,7 @@ namespace ProjectLama
             }
             catch (Exception ex)
             {
-                File.AppendAllText("crashlog.txt", ex.Message);
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
             }
         }
 
@@ -619,34 +555,18 @@ namespace ProjectLama
                     Filter = "LAMA playlist|*.lpl"
                 };
                 if (openFileDialog.ShowDialog() != true) return;
-                var playlistLoaded = new List<string>();
-                playlistLoaded.AddRange(File.ReadAllLines(openFileDialog.FileName));
-                var count = int.Parse(playlistLoaded[0]);
                 Files.Clear();
                 Paths.Clear();
                 RepeatButton.IsChecked = _repeatOn = false;
                 Playlist.Items.Clear();
                 LastTrack = 0;
-                for (var i = 1; i <= count; i++)
-                {
-                    if (File.Exists(new FileInfo(playlistLoaded[i]).FullName))
-                    {
-                        Files.Add(Path.GetFileNameWithoutExtension(playlistLoaded[i]));
-                        Paths.Add(playlistLoaded[i]);
-                    }
-                    else
-                    {
-                        playlistLoaded.RemoveAt(i);
-                        i--;
-                        count--;
-                    }
-                }
+                LoadPlaylist(openFileDialog.FileName);
                 MediaPlayer.Open(new Uri(Paths[0]));
                 SetMusic();
             }
             catch (Exception ex)
             {
-                File.AppendAllText("crashlog.txt", ex.Message);
+                File.AppendAllText("crashlog.txt", $@"{ex.Message}, {ex.StackTrace}, {DateTime.Now}");
             }
         }
 
@@ -657,15 +577,14 @@ namespace ProjectLama
                 Playlist.Items.Add(Files[i]);
                 if (i != LastTrack) continue;
                 LoadCover(i);
-                TopTitle.Text = Files[i];
-                RoseWindow.Title = Files[i];
+                TopTitle.Text = RoseWindow.Title = Files[i];
             }
             if (Playlist.Items.Count > 0)
             {
                 Playlist.SelectedIndex = LastTrack;
                 TrackTime.IsEnabled = true;
                 MediaPlayer.Play();
-                DeletePlaylist.Visibility = DeleteTrack.Visibility = Visibility.Visible;
+                DeletePlaylist.Visibility = Visibility.Visible;
             }
             NowPlay = LastTrack;
             LastTrack = Files.Count;
@@ -699,31 +618,15 @@ namespace ProjectLama
             Resources = new ResourceDictionary { Source = new Uri($"pack://application:,,,/Themes/{ResourceAttribute.Get(theme)}") };
         }
 
-        private void RoseThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            SetTheme(PlayerTheme.ROSE);
-        }
+        private void RoseThemeButton_Click(object sender, RoutedEventArgs e) => SetTheme(PlayerTheme.ROSE);
 
-        private void BlueThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            SetTheme(PlayerTheme.BLUE);
-        }
+        private void BlueThemeButton_Click(object sender, RoutedEventArgs e) => SetTheme(PlayerTheme.BLUE);
 
-        private void RedThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            SetTheme(PlayerTheme.RED);
-        }
+        private void RedThemeButton_Click(object sender, RoutedEventArgs e) => SetTheme(PlayerTheme.RED);
 
-        private void GreenThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            SetTheme(PlayerTheme.GREEN);
-        }
+        private void GreenThemeButton_Click(object sender, RoutedEventArgs e) => SetTheme(PlayerTheme.GREEN);
 
-        private void GrayThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            SetTheme(PlayerTheme.GRAY);
-        }
+        private void GrayThemeButton_Click(object sender, RoutedEventArgs e) => SetTheme(PlayerTheme.GRAY);
         #endregion
-
     }
 }
