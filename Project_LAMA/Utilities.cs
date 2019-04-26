@@ -39,19 +39,19 @@ namespace ProjectLama
     }
     public enum PlayerTheme
     {
-        [Uri(@"\Assets\LamaRose.png")]
+        [Uri(@"\Assets\Rose\LamaRose.png")]
         [Resource("RoseDictionary.xaml")]
         ROSE,
-        [Uri(@"\Assets\LamaBlue.png")]
+        [Uri(@"\Assets\Blue\LamaBlue.png")]
         [Resource("BlueDictionary.xaml")]
         BLUE,
-        [Uri(@"\Assets\LamaRed.png")]
+        [Uri(@"\Assets\Red\LamaRed.png")]
         [Resource("CrimsonDictionary.xaml")]
         RED,
-        [Uri(@"\Assets\LamaGreen.png")]
+        [Uri(@"\Assets\Green\LamaGreen.png")]
         [Resource("GreenDictionary.xaml")]
         GREEN,
-        [Uri(@"\Assets\LamaGray.png")]
+        [Uri(@"\Assets\Gray\LamaGray.png")]
         [Resource("GrayDictionary.xaml")]
         GRAY,
     }
