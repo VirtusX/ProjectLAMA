@@ -20,7 +20,7 @@ namespace ProjectLama
                 {
                     property.Volume = Settings.Default.Volume;
                     property.Theme = Settings.Default.Theme;
-                    if (Settings.Default.Track.Capacity != 0)
+                    if (Settings.Default.Track?.Capacity != 0)
                         property.HasPlaylist = true;
                 }
             }

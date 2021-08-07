@@ -122,11 +122,11 @@ namespace ProjectLama
                 item.Style = i == NowPlay ? (Style)Application.Current.Resources["PlaylistPlaying"] : null;
                 if (item.ContextMenu != null) continue;
                 var menu = new ContextMenu();
-                var play = new MenuItem {Header = "Воспроизвести"};
+                var play = new MenuItem {Header = "Play"};
                 play.Click += Play_Click;
-                var copy = new MenuItem {Header = "Копировать"};
+                var copy = new MenuItem {Header = "Copy"};
                 copy.Click += (sender, args) => Clipboard.SetText(item.Content.ToString());
-                var delete = new MenuItem {Header = "Удалить"};
+                var delete = new MenuItem {Header = "Delete"};
                 delete.Click += DeleteTrack_Click;
                 menu.Items.Add(play);
                 menu.Items.Add(copy);
@@ -381,6 +381,7 @@ namespace ProjectLama
 
         private void LoadLastPlaylist()
         {
+            if(Default.Track != null)
             foreach (var name in Default.Track)
             {
                 if (!File.Exists(new FileInfo(name).FullName)) continue;
